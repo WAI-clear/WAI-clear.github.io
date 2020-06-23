@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Hexo">
+    <meta name="keywords" content="以梦为马，不负韶华, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | Hexo</title>
+    <title>以梦为马，不负韶华 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -332,12 +332,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">以梦为马，不负韶华</h1>
                 </div>
             </div>
         </div>
@@ -482,19 +482,128 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+                <p><strong>nmap端口扫描介绍</strong>:扫描局域网外的主机会先发包进行主机存活性探测</p>
+<p>nmap把端口分成六个状态：</p>
+<ul>
+<li><p>open(开放的)</p>
+<p>应用程序正在该端口接收TCP连接或者UDP报文。发现这一点常常是端口扫描的主要目标。每个开放的端口都可能是攻击的入口。攻击者或者渗透测试者想要发现开放的端口。而管理员则试图关闭它们或则用防火墙保护它们以免妨碍了合法用户。安全扫描对开放的端口也感兴趣，因为它们显示网路上哪些服务可供使用。</p>
+</li>
+<li><p>closed(关闭的)</p>
+<p>关闭的端口对于Nmap也是可以访问的（它接受nmap的探测报文并作出响应），但没有应用程序在其上监听。它们可以显示该IP地址上的主机正在运行。也对部分操作系统探测有所帮助。因为关闭的端口是可访问的，也许过会儿值得在扫描一下，可能一些又开放了。系统管理员可能会考虑用防火墙封锁这样的端口。那样就会显示为过滤状态。</p>
+</li>
+<li><p>filtered(被过滤的)</p>
+<p>由于包过滤<strong>阻止</strong>探测报文<strong>到达端口</strong>，nmap无法确定该端口是否开放。过滤可能来自专业的防火墙设备。这样的端口让攻击者感觉很挫败，因为它们几乎不提供任何信息。有时候它们响应<strong>ICMP错误消息</strong>如类型3代码13（无法到达目标：通信被管理员禁止），但更普遍的是过滤器只是丢弃探测帧，不做任何响应。这迫使nmap重试若干次以防万一探测包是由于网络阻塞丢弃的。这使得扫描速度明显</p>
+</li>
+<li><p>unfiltered(未被过滤的)</p>
+<p>未被过滤状态意味着端口可访问，但nmap不能确定它是开放还是关闭。只有用于映射防火墙规则集的ack扫描才会把端口分类到这种状态。用其他类型的扫描如窗口扫描，SYN扫描，或者FIN扫描来扫描未被过滤的端口可以帮助确定端口是否开放。</p>
+</li>
+<li><p>open|filtered(开放或者被过滤的):<strong>因为有时候发送的探测如果端口开放不会有数据包返回,而关闭反而有数据包返回,所以此时开放和过滤是同一个结果</strong></p>
+<p>当无法确定端口是开放还是被过滤的，nmap就把端口划分成这种状态。开放的端口不响应就是一个例子。没有响应也可能意味着报文过滤器丢弃了探测报文或则它引发的任何响应。因此nmap无法确定该端口是开放还是被过滤的。UDP、IP协议、FIN、Null,和Xmas扫描可能把端口归入此类。</p>
+</li>
+<li><p>closed|filtered(关闭或者被过滤的)</p>
+<p>该状态由于nmap不能确定端口是关闭的还是被过滤的。它只可能出现在idle扫描中。</p>
+</li>
+</ul>
+<p><strong>SYN探测技术</strong>：（抓包分析失败）</p>
+<blockquote>
+<p>​    因为SYN扫描中Client端和Server端没有形成3次握手，所以没有建立一个正常的TCP连接，因此不被防火墙和日志所记录，一般不会再目标主机上留下任何的痕迹，但是这种扫描是需要<strong>root</strong>权限(因为要使用原始套接字)。</p>
+</blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sS -p80 <span class="number">192</span>.<span class="number">168</span>.<span class="number">101</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>win+r 》输入 control 》选择系统安全》 选择防火墙</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -an    #查看主机端口开放情况</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>总结：</p>
+<p>​    对于不开放端口也会返回filtered状态</p>
+<p><strong>TCP探测介绍</strong>：</p>
+<blockquote>
+<p>​    这是一种最为普通的扫描方法，这种扫描方法的特点是：扫描速度快，准确性高，对操作者没有权限上的要求，但是容易对防火墙和IDS(防入侵系统)发现。运行的原理：通过<strong>完整的</strong>TCP的<strong>三次握手</strong>连接来进行信息的传递。</p>
+</blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sT -p80 <span class="number">192</span>.<span class="number">168</span>.<span class="number">101</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p><strong>UDP探测介绍</strong>：</p>
+<blockquote>
+<p>​    UDP扫描发送<strong>空的（没有数据）</strong>UDP报头到每个目标端口。如果返回ICMP不可达错误（类型3，代码3)，该端口是closed(关闭的)。其他ICMP不可达错误（类型3，代码1，2，9，10,或者13）表明该端口是filtered。偶尔的，某个服务会响应一个UDP报文，证明该端口是open。如果几次重试后还没有响应，该端口就被认为是open|filtered。这意味着该端口可能是开放的，也可能包过滤器正在封锁通信。</p>
+</blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sU -p <span class="number">1</span>-<span class="number">1000</span> <span class="number">192</span>.<span class="number">168</span>.<span class="number">101</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>探测UDP服务是速度特别慢的。UDP扫描的巨大挑战是怎样使它更快速。一般情况下，目标端口不会对UDP响应.</p>
+<p><strong>Nmap UDP探测加速</strong>:</p>
+<blockquote>
+<p>​    Linux 2.4.20内核限制一秒钟只能发送一条目标不可达消息Linux一秒钟一个报文的限制使65536个端口的扫描要花18小时以上.从防火墙后面扫描,使用<strong>–host-timeout</strong>跳过慢速的主机.</p>
+</blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /proc/sys/<span class="built_in">net</span>/ipv4</span><br><span class="line"></span><br><span class="line">gedit icmp_ratelimit 改为<span class="number">100</span>毫秒</span><br><span class="line"><span class="built_in">echo</span> <span class="number">100</span> &gt;/proc/sys/<span class="built_in">net</span>/ipv4/icmp_ratelimit</span><br></pre></td></tr></table></figure>
+
+<p><strong>Nmap NULL探测介绍</strong>:</p>
+<blockquote>
+<p>​    是一种反向的扫描方法,通过发送一个<strong>没有任何标志位</strong>的数据包给服务器,然后等待服务器的返回内容.这种扫描的方法比前面提及的扫描方法要隐蔽很多,但是这种方法的准确度也是很低的.<strong>主要用途</strong>是用来判断操作系统是否为<strong>windows</strong>,因为windows不遵守RFC 793 标准,<strong>不论端口是开启还是关闭的都返回RST</strong></p>
+</blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sN -v -p80 <span class="number">192</span>.<span class="number">168</span>.<span class="number">101</span>.<span class="number">14</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>NULL 探测缺点</strong>:</p>
+<ul>
+<li>Null方法的精确度不高,端口的状态返回的不是很准确</li>
+<li>要获取目标主机的运行系统,可以使用参数(-O),对于一些操作系统无法准确判断的,可以加上参数(-osscan-guess)</li>
+<li>NULL扫描容易被过滤,扫描局域网外的准确性更低.</li>
+</ul>
+<p><strong>FIN探测</strong>:</p>
+<blockquote>
+<p>​    FIN表示关闭连接,RST表示连接重置.如果端口关闭,返回RST.如果端口开放,不做任何响应.</p>
+</blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sF -p80 <span class="number">192</span>.<span class="number">168</span>.<span class="number">32</span>.<span class="number">129</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>FIN探测缺点</strong>:</p>
+<ul>
+<li>方法的精确度不高,端口状态返回不是很准确</li>
+<li>容易被防火墙过滤</li>
+</ul>
+<p><strong>xmas探测</strong>:</p>
+<blockquote>
+<p>设置FIN,PSH,和URG标志位.除了探测报文的标志位不同,这三种扫描在行为上完全一致.如果收到一个RST报文,该端口被认为是closed(关闭的),而没有响应则意味着端口是open|filtered(开放或者被过滤的).如果收到ICMP不可达错误(类型 3,代号1,2,3,9,10,或者13),该端口就被标记为被过滤的.PSH表示有DATA数据传输,URG(紧急位): 设置为1时,首部中的紧急指针有效;为0时,紧急指针没有意义.</p>
+<p>这些扫描的<strong>关键优势时它们能躲过一些无状态防火墙和报文过滤路由器.另一个优势是这些扫描类型甚至比SYN扫描还要隐秘一些.</strong></p>
+</blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sX -p80 <span class="number">192</span>.<span class="number">168</span>.<span class="number">101</span>.<span class="number">14</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>ack探测</strong>:(本地探测结果都是unfiltered)</p>
+<blockquote>
+<p>​    这种扫描与目前为止的其他扫描的不同之处在于它不能确定open(开放的)或者 open|filtered(开放或者过滤的)端口. 它<strong>用于发现防火墙规则,哪些端口是被过滤的</strong>.</p>
+<p>ACK扫描探测报文只设置ACK标志位(除非使用 –scanflags).当扫描未被过滤的系统时,开放的和关闭的端口都会返回RST报文.nmap把它们标记未unfiltered,意思是ACK报文不能到达,但至于它们是open(开放的)或者closed(关闭的)无法确定.不响应的端口或者发送特定的ICMP错误消息(类型3,代号1,2,3,9,10,或者13)的端口,标记为filtered.</p>
+</blockquote>
+<p><strong>TCP窗口探测</strong>:</p>
+<blockquote>
+<p>窗口扫描和ACK扫描完全一样.它通过检查返回的RST报文的TCP窗口域做到这一点.<strong>在某些系统上,开放端口用正数表示窗口大小(甚至对于RST报文)而关闭窗口大小为零</strong>.因此,当收到RST时,窗口扫描不总是把端口标记为filtered,而是根据TCP窗口值是正数还是零,分别把端口标记为open或者closed.</p>
+</blockquote>
+<blockquote>
+<p>该扫描依赖于互联网上少数系统的实现细节,因此结果不完全可信.不支持它的系统会返回所有端口closed.当然,一台机器没有开放端口也是有可能的.如果大部分被扫描的端口是closed,而一些常见的端口(如22,25,53)是filtered,该系统就非常可疑了.偶尔,系统甚至会显示恰恰相反的行为.例如扫描显示1000个开放的端口和3个关闭的或者被过滤的端口,那么那3个很可能也是开放的端口.</p>
+</blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sW -p80 <span class="number">192</span>.<span class="number">168</span>.<span class="number">101</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>TCP Flag探测</strong>：</p>
+<p>–scanflags选项允许通过指定任意TCP标志位来设计自己的扫描，躲开那些仅靠手册添加规则的入侵检测系统！</p>
+<p>–scanflags选项可以是一个数字标记值如9(PSH和FIN）,但使用字符名更容易，只要是URG,ACK,PSH,RST,SYN,FIN的任何组合就行。例如 –scanflags URGACKPSHRSTSYNFIN设置了所有标志位，但是这对扫描没有太大用处。标志位的顺序不重要。</p>
+<p>除了设置需要的标志位，也可以设置TCP扫描类型（如-sA或则-sF)。那个基本类型告诉nmap怎样解释响应。例如，SYN扫描认为没有响应意味着filtered端口，而FIN扫描则认为是open|filtered。除了使用指定的TCP标志位，nmap会和基本类型一样工作，如果不指定基本类型，就是用SYN扫描</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap --scanflag URGACK -p80 <span class="number">192</span>.<span class="number">168</span>.<span class="number">101</span>.<span class="number">1</span>s</span><br></pre></td></tr></table></figure>
+
+<p><strong>端口TCPMaimon探测</strong>：</p>
+<blockquote>
+<p>Maimon扫描是用发现者uriel maimon命名的。这项技术和null，fin,以及xmas扫描完全一样，除了探测报文是FIN/ACK。根据RFC 793(TCP)，无论端口开放或者关闭，都应该对这样的探测响应RST报文。然而，uriel注意到如果端口开放，许多基于BSD的系统只是丢弃该探测报文</p>
+</blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sM -p <span class="number">80</span> <span class="number">192</span>.<span class="number">168</span>.<span class="number">101</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>IP协议探测介绍</strong>：</p>
+<blockquote>
+<p>​    协议扫描以和UDP扫描类似的方式工作，它不是在UDP报文的端口域上循环，而是在IP协议域的8位上循环，发送IP报文头。报文头通常是空的，不包含数据，甚至不包含所申明的协议的正确报文头。TCP,UDP和ICMP是三个例外。它们三个会使用正常的协议头，因为否则某些系统拒绝发送，而且nmap有函数创建它们。协议扫描不是注意ICMP端口不可到达消息，而是ICMP协议不可到达消息。如果nmap从目标主机收不到任何协议的任何响应，nmap就把那个协议标记为open.ICMP协议不可到达错误（类型3，代号2）导致协议被标记为closed.其它ICMP不可达协议（类型3，代号1，3，9，10或者13)导致协议被标记为filtered(虽然同时证明iCMP是open).如果重试之后仍然没有收到响应，该协议就被标记为open|filtered</p>
+</blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sO -p80 <span class="number">192</span>.<span class="number">168</span>.<span class="number">101</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>zombie主机扫描</strong>：</p>
+<p><a href="https://nmap.org/book/idlescan.html" target="_blank" rel="noopener">https://nmap.org/book/idlescan.html</a></p>
+<p><img src="C:%5C%E8%B5%84%E6%BA%90%5C%E6%96%87%E6%A1%A3%5C%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%5C%E7%AC%94%E8%AE%B0%5Cweb%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88%5Cnmap%5Cpic%5Cimage-20200620000200633.png" alt="image-20200620000200633"></p>
+<p><img src="C:%5C%E8%B5%84%E6%BA%90%5C%E6%96%87%E6%A1%A3%5C%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%5C%E7%AC%94%E8%AE%B0%5Cweb%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88%5Cnmap%5Cpic%5Cimage-20200620000347679.png" alt="image-20200620000347679"></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -Pn -p- -sI kiosk.adobe.com www.riaa.com</span><br></pre></td></tr></table></figure>
+
 
             </div>
             <hr/>
@@ -520,7 +629,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://wai-clear.github.io/2020/06/23/hello-world/">https://wai-clear.github.io/2020/06/23/hello-world/</a>
+                    <a href="https://wai-clear.github.io/2020/06/23/nmap%E7%AB%AF%E5%8F%A3%E6%8E%A2%E6%B5%8B/">https://wai-clear.github.io/2020/06/23/nmap%E7%AB%AF%E5%8F%A3%E6%8E%A2%E6%B5%8B/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -727,13 +836,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/06/23/nmap%E7%AB%AF%E5%8F%A3%E6%8E%A2%E6%B5%8B/">
+                <a href="/2020/06/23/nmap-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="以梦为马，不负韶华">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="nmap 端口扫描">
                         
-                        <span class="card-title">以梦为马，不负韶华</span>
+                        <span class="card-title">nmap 端口扫描</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -765,7 +874,7 @@ open(开放的)
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2020/06/23/hello-world/">
@@ -795,7 +904,6 @@ open(开放的)
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
