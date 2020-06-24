@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="主机信息发现, WAI-clear">
+    <meta name="keywords" content="git学习总结, WAI-clear">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>主机信息发现 | WAI-clear</title>
+    <title>git学习总结 | WAI-clear</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">主机信息发现</h1>
+                    <h1 class="description center-align post-title">git学习总结</h1>
                 </div>
             </div>
         </div>
@@ -430,8 +430,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/nmap/">
-                                <span class="chip bg-color">nmap</span>
+                            <a href="/tags/git/">
+                                <span class="chip bg-color">git</span>
                             </a>
                         
                     </div>
@@ -442,8 +442,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%BC%8F%E6%89%AB/" class="post-category">
-                                漏扫
+                            <a href="/categories/git-github%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                git&github学习
                             </a>
                         
                     </div>
@@ -471,30 +471,245 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>nmap –script-help 脚本名 里面会有解释文档的链接信息</p>
-<p><strong>判断主机存活方式</strong>：</p>
+                <p><strong>版本控制原理</strong>：</p>
+<p>git通过用户自定义标记来进行版本控制，既可以继续新建，也可以直接回退。</p>
+<p><strong>分布式控制原理</strong>：</p>
+<p>中央服务器，提供仓库下载和上传功能。每一个工作电脑都可以<strong>克隆服务器上完整</strong>项目代码。</p>
+<p><strong>集中和分布式控制区别</strong>：</p>
+<p><img src="/2020/06/24/git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/image-20200622143313573.png" alt="image-20200622143313573"></p>
+<p><img src="/2020/06/24/git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/image-20200622143344130.png" alt="image-20200622143344130"></p>
+<p><strong>git安装</strong>：</p>
+<p><a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a></p>
+<p><strong>帮助信息</strong></p>
+<p><a href="https://git-scm.com/docs" target="_blank" rel="noopener">https://git-scm.com/docs</a></p>
+<p><strong>git三种状态</strong>：</p>
+<p>git几乎所有操作都是在本地完成，本地完成后再进行上传。其中本地三中状态可以进行切换，实现版本控制。</p>
 <ul>
-<li><p>-sn（ping scan）:不进行端口扫描</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn <span class="number">192</span>.<span class="number">168</span>.<span class="number">101</span>.<span class="number">14</span>/<span class="number">24</span></span><br><span class="line"><span class="built_in">ping</span> www.baidu.com</span><br><span class="line">nmap -sn</span><br></pre></td></tr></table></figure>
+<li>working directory</li>
+<li>staging area</li>
+<li>.git directory</li>
+</ul>
+<p><img src="/2020/06/24/git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/image-20200622184706937.png" alt="image-20200622184706937"></p>
+<p><strong>git使用流程</strong>：</p>
+<ul>
+<li><p>git版本库初始化</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> git_test</span><br><span class="line"><span class="built_in">cd</span> ./git_test</span><br><span class="line">git init</span><br><span class="line">ls -alh</span><br><span class="line"><span class="built_in">cd</span> .git/  #版本库目录</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<strong>工作目录</strong>中修改文件</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /git_test</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>暂存文件，将文件快照放入暂存区域</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim 文件名</span><br><span class="line">git add 文件名 #将文件添加到暂存区</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交更新，找到暂存区域的文件，将快照永久性存储到git仓库目录</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit -m "ver1.<span class="number">0</span>"</span><br><span class="line">git log</span><br></pre></td></tr></table></figure>
 
 
 
 </li>
 </ul>
+<p><strong>git配置</strong>：</p>
 <ul>
-<li><p>-PS :TCP SYN 探针类型，进行主机发现</p>
-<blockquote>
-<p>客户端：    SYN</p>
-<p>服务端：  SYN/ACK （得知服务端主机存活）</p>
-<p>客户端 ：RST(复位TCP连接，告诉对方结束连接)</p>
-</blockquote>
+<li><p>初始化配置文件</p>
+<p>每台计算机上只需要配置一次，程序升级时会保留配置信息。可以在任何时候再次通过命令来修改它们</p>
 <ul>
-<li><p>突破防火墙技巧</p>
-<blockquote>
-<p>当防火墙自动过滤80端口的SYN时。</p>
-<p>可以通过指定端口来突破这样的过滤规则</p>
-</blockquote>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn -PS -p <span class="number">1</span>-<span class="number">1000</span> IP_ADDRESS</span><br></pre></td></tr></table></figure>
+<li>/etc/gitconfig文件：包含系统上每一个用户及它们仓库的通用配置。如果使用带有–system选项的git config时，它会从此文件读写配置变量</li>
+<li>~/.gitconfig 或 ~/.config/git/config文件：只针对当前用户。可以传递 –global选项让git读写此文件</li>
+<li>当前使用仓库的git目录中的config文件（就是.git/config):针对该仓库。</li>
+</ul>
+<p>每一个级别覆盖上一级别的配置，所以.git/config的配置变量会覆盖/etc/gitconfig中的配置变量。</p>
+</li>
+</ul>
+<p><strong>git配置用户信息</strong>：<br>如果使用–global选项，那么命令只需要运行一次，因为之后无论在系统上做任何操作，git都会使用那些信息。当想针对特定项目使用不同的用户名和邮件地址时，可以在那个项目目录下运行没有–global选项的命令来配置。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name "clear"</span><br><span class="line">git config --global user.email <span class="number">2628543489</span>@qq.com</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看配置信息</strong>：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br><span class="line">git config 具体选项（如：user.name)</span><br><span class="line">git config 具体选项（如：user.name)  修改值</span><br></pre></td></tr></table></figure>
+
+<p><strong>git远程仓库使用</strong>：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone [url] #下载远程仓库中的项目</span><br></pre></td></tr></table></figure>
+
+<p><strong>git回退版本</strong>：</p>
+<p>当项目开发多次迭代之后，会在git中记录多个版本的项目。如果想在开放过程中直接回退到之前的版本。在git可以使用<strong>git reset</strong>来实现。</p>
+<p>在git中HEAD始终指向当前版本。HEAD^前一个版本，HEAD^^前两个版本，HEAD~n前n个版本</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD~<span class="number">1</span>或HEAD^</span><br></pre></td></tr></table></figure>
+
+<p><strong>git版本编号</strong>：</p>
+<p>git版本编号唯一，所以可以通过版本编号来切换</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 版本编号</span><br></pre></td></tr></table></figure>
+
+<p><strong>终端关闭后获取版本编号</strong>：</p>
+<p>重新打开终端，使用reflog</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /get_test</span><br><span class="line">git reflog #查看历史操作记录</span><br></pre></td></tr></table></figure>
+
+<p><strong>git状态查看</strong>：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /git_test</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<p><strong>git撤销工作区修改</strong>：</p>
+<p>在git工作区重新编辑了已经提交过hello.py,此时新编辑的内容并没有被添加和提交。</p>
+<p>但是又不需要新添加的内容，可使用:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout --文件名 直接删除修改</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<p><strong>git撤销暂存区修改</strong>：</p>
+<p>工作区的修改已经提交到了暂存区（add命令），但是并没有commit提交</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD 文件</span><br></pre></td></tr></table></figure>
+
+<p><strong>git版本记录简化</strong>：</p>
+<p>使用git log查看版本记录比较冗余，可以使用 git log  –pretty=oneline简化</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br><span class="line">git log --pretty=oneline --graph</span><br></pre></td></tr></table></figure>
+
+<p><strong>git状态变化周期</strong>：</p>
+<p><img src="/2020/06/24/git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/image-20200622202643276.png" alt="image-20200622202643276"></p>
+<p>untracked: 未被加入到git管理中，如果删除，通过git将无法修复</p>
+<p><strong>git删除文件</strong>：</p>
+<p><strong>rm</strong>:删除untracked文件将无法通过git恢复</p>
+<p><strong>git rm</strong>: 下次提交时，文件就不再纳入版本管理了。如果删除之前修改过并且已经放到暂存区域的，必须要用强制删除选项-f。这样数据就<strong>不能被git恢复</strong>，<strong>主要用来删除暂存区的内容</strong></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -f 文件名</span><br></pre></td></tr></table></figure>
+
+<p><strong>git状态简化查看</strong>：</p>
+<p>git下的git status很详细的展示状态变化，但是如果状态很多，那么直接显示就比较复杂。</p>
+<p>可以使用git status -s简化。新添加的未跟踪文件前面又？？标记，新添加到暂存区中的文件前面又A标记，修改过的文件前面有M标记。M出现在右边表示该文件被修改了但是还没有放入暂存区，出现在左边表示该文件被修改了并放入了暂存区。</p>
+<p><strong>git查看工作区文件的变化</strong>：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> "<span class="number">2</span>"&gt;<span class="number">1</span>.txt  &gt;覆盖， &gt;&gt;追加</span><br><span class="line">git diff <span class="number">1</span>.txt</span><br></pre></td></tr></table></figure>
+
+<p><strong>暂存区中文件变化</strong>：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --staged</span><br></pre></td></tr></table></figure>
+
+<p><strong>对比不同状态中的文件</strong>：对比提交版本中文件和当前工作区文件不同</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff HEAD -- 文件名</span><br></pre></td></tr></table></figure>
+
+<p><strong>对比不同版本之间的不同</strong>：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff HEAD HEAD^ -- 文件名</span><br></pre></td></tr></table></figure>
+
+<h4 id="git分支："><a href="#git分支：" class="headerlink" title="git分支："></a><strong>git分支</strong>：</h4><p><strong>git分支概念</strong>：</p>
+<p>使用分支意味着可以把工作从开发主线中分离开以免影响开发主线。</p>
+<p><strong>git分支实际使用</strong>：</p>
+<p>假设目前项目需要开发新功能，但是自己目前开发了40%，如果立刻提交会造成别人无法正常工作。如果代码在写完之后一并提交，又丢失每天进度。</p>
+<p>解决方法：创建属于自己的分支，别人在原来分支工作，互不影响。直到开发完成合并分支完成项目</p>
+<p><strong>git中HEAD介绍</strong>：</p>
+<p>默认情况下，git创建一条主分支（master)。而HEAD是指向master分支的一个指针。实际上HEAD是指向当前工作分支。</p>
+<p>如果创建新分支，HEAD指向新分支。如果修改master主分支，master会指向修改后的主分支，HEAD指向master.</p>
+<p><strong>默认分支介绍</strong>：</p>
+<p>在git中，以master为开发主线，后期分支合并也是直接合并到master主分支。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch  查看当前HEAD指向分支</span><br></pre></td></tr></table></figure>
+
+<p><strong>分支创建</strong>：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名   #创建分支</span><br><span class="line">git checkout 分支名 #切换分支 前面有*b表示当前分支</span><br><span class="line">git checkout -b 分支名  #直接完成创建和切换</span><br></pre></td></tr></table></figure>
+
+<p><strong>分支创建原理</strong>：</p>
+<p><img src="/2020/06/24/git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/image-20200623091942695.png" alt="image-20200623091942695"></p>
+<p>创建新的分支，将HEAD指向新分支，完成之后再合并到主分支</p>
+<p><strong>git分支合并</strong>：</p>
+<p>原理：合并的实质就是将分支内容迁移到master主分支，但是合并完成后，当前工作分支没有改变</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git merge 新分支名</span><br><span class="line">#合并后就可以删除这个分支，删除前要先切换到其他分支</span><br><span class="line">git checkout master</span><br><span class="line">git  branch -d 新分支名</span><br></pre></td></tr></table></figure>
+
+<p><strong>git快速合并（Fast-forward)</strong>:用于主分支内容不变其他分支内容改变</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge 分支名</span><br></pre></td></tr></table></figure>
+
+<p>如果在两个分支中同时修改了一个文件，合并就会出现问题，解决方法：不要再主分支中修改。</p>
+<p><strong>git策略合并（非快速合并）</strong>：</p>
+<p>主分支和其他分支修改了不同文件</p>
+<p><strong>区别</strong>：</p>
+<p>默认使用快速合并，也可以痛过 –no-ff指定为策略合并</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --no-ff -m “ver1.<span class="number">0</span>”  分支名</span><br></pre></td></tr></table></figure>
+
+<p>策略合并（主分支和新分支都修改了）使用三次提交（主分支，新分支，合并分支），快速合并（只有新分支修改了）两次提交（新分支，合并分支）。 </p>
+<p><strong>github仓库创建</strong>：</p>
+<p>github是一个面向开源及私有软件项目的托管平台，因为只支持git作为唯一的版本库格式进行托管，故名gitHub</p>
+<p>版本控制中，需要有中央服务器进行代码管理。中央服务器可以自行搭建，也可以使用github进行搭建。</p>
+<p>在github上编辑文章默认提交到master分支</p>
+<p><strong>git添加SSH用户到github</strong>:</p>
+<ul>
+<li><p><strong>git配置邮箱和用户名</strong></p>
+<p>登录github需要使用对应的用户名和密码,其中用户名需要配置邮箱和github用户名.</p>
+<p>配置位置:<strong>用户目录下的.gitconfig文件中</strong>,可以直接修改文件内容或使用<strong>git config</strong>命令配置.</p>
+</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">cat .gitconfig</span><br><span class="line">git config --global user.name "github用户名"</span><br><span class="line">git config --global user.email "github邮箱"</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Linux生成密钥</p>
+<p>ssh-keggen生成密钥</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sh-keygen -t rsa -C "<span class="number">2628543489</span>@qq.com"</span><br><span class="line">-t加密方式</span><br><span class="line">-C 邮箱</span><br><span class="line"><span class="built_in">cd</span> /root/.ssh/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将第二步生成的公钥文件上传到github .ssh/id_rsa.pub</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat id_rsa.pub结果复制到github</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/06/24/git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/image-20200623105913431.png" alt="image-20200623105913431"></p>
+</li>
+<li><p>克隆连接仓库</p>
+<p>在linux中可以直接克隆远程的github仓库,进行代码开发.使用git clone命令克隆</p>
+<p><img src="/2020/06/24/git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/image-20200623110701991.png" alt="image-20200623110701991"></p>
+</li>
+</ul>
+<p><strong>github项目代码开发</strong>:</p>
+<ul>
+<li><p>本地推送代码到github</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin 分支名称 将本地分支所有内容推送到远程库中</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置本地分支跟踪远程分支:</p>
+<p>使用 git branch –set-upstream-to=origin/远程分支名 本地分支名</p>
+</li>
+<li><p>远程代码拉取到本地</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin 远程分支名</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>git工作流程</strong>:</p>
+<p>项目经理:</p>
+<ul>
+<li>搭建项目框架,把框架发送到服务器</li>
+<li>将员工的SSH公钥添加到服务器</li>
+</ul>
+<p>普通员工:</p>
+<ul>
+<li>生成SSH公钥,发送给项目经理</li>
+<li>收到项目经理项目地址,git clone代码</li>
+<li>本地创建分支 ,开发代码,把代码发送到远程服务器.</li>
+<li>一般情况下,master分支用来保存发布的项目,dev分支用来保存开发过程中用的代码.</li>
+</ul>
+<p><strong>git信息泄露</strong>:</p>
+<ul>
+<li><p>含义:</p>
+<p>​    git信息泄露就是通过git导致程序源代码泄露.在源代码中可以找到各种敏感信息,例如内容IP,数据库连接信息等.</p>
+</li>
+<li><p>利用原理:</p>
+<p>默认情况下,所有的git初始化都会在目录下创建.git文件夹,用来存储对应配置信息.</p>
+<p>解析.git/index文件,找到工程所有文件名:(文件名,文件sha1)</p>
+<p>在.git/objects/文件夹下下载对应的文件</p>
+<p>zlib解压文件,按原始的目录结构写入源代码</p>
+</li>
+<li><p>本地测试环境搭建</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/myFirstRes/  myFirstRes(通过git clone的远程仓库名)</span><br><span class="line">cp -r ~/myFirstRes/ /var/www/html/</span><br><span class="line">service apache2 <span class="built_in">start</span></span><br><span class="line">#查看本地ip</span><br><span class="line">ifconfig</span><br><span class="line">#使用GitHack.py完成.git/信息获取</span><br><span class="line">git clone https://github.com/lijiejie/GitHack.git</span><br><span class="line"><span class="built_in">cd</span> ~/GitHack/</span><br><span class="line">python GitHack.py http://<span class="number">192</span>.<span class="number">168</span>.<span class="number">32</span>.<span class="number">136</span>/myFirstRes/.git/</span><br><span class="line">ls</span><br><span class="line"><span class="built_in">cd</span> <span class="number">192</span>.<span class="number">168</span>.<span class="number">32</span>.<span class="number">136</span>/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>造成信息泄露原因是在项目发布前没有将<strong>.git</strong>目录删除</p>
+</li>
+</ul>
+<p><strong>github博客搭建</strong>:</p>
+<ul>
+<li><p>Node:</p>
+<p>Node.js是一个让JavaScript运行在服务端的开发平台,它让Javascript成为于PHP,Python,Perl,Ruby等服务端语言平起平坐的脚本语言.Node.js所带来的超快生成速度,让上百个页面在几秒内瞬间完成渲染.</p>
+<ul>
+<li><p>下载安装node:</p>
+<p>​    <a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
+<p>​    <a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">https://nodejs.org/zh-cn/</a></p>
+</li>
+</ul>
+</li>
+<li><p>windows下生成SSH密钥:</p>
+<ul>
+<li><p>使用Git的ssh-keygen</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen.exe -t rsa -C &quot;2628543489@qq.com&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加公钥到github;公钥内容在:C:\Users\zx.ssh\id_rsa.pub</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ssh-rsa </span><br><span class="line">qwjwZwZ5XaYr9aD3QA1nL9AY0RJRSNyhfOA15jnwYKjVGIAYKyYMCltIeAJ2cp</span><br><span class="line"></span><br><span class="line">3MihE1IJkf+2AvMP9+X1OoUW1Q73W0FLjIFrEvg+MkvFki9ndCm6fDC6iWHSSu</span><br><span class="line">oUeWVfEOeBiWAxLBXMjX4Bqi6XYmDE18wapXuJBokVkMyYWM3a4rBN03pJGBsV</span><br><span class="line">W0TtkgjtQiYHP6gSbB0FYiPOMrijb&#x2F;7nBcJsrtV6hwt49uA30JVARVtv6yWDZ3</span><br><span class="line">j8dufmenqH23U9gyzMQHC5K6XxDorlYVp0SqHZJqHCtQS5DjQ&#x2F;0&#x3D; 2628543489@qq.com</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>使用node.js开发的hexo博客系统:</p>
+<ul>
+<li><p>本地下载安装hexo:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br><span class="line">hexo server -p 端口</span><br></pre></td></tr></table></figure>
 
 
 
@@ -502,112 +717,40 @@
 </ul>
 </li>
 </ul>
+<p><strong>github博客初始化</strong>:</p>
 <ul>
-<li><p>-PA ：TCP ACK探测</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nmap -PA <span class="number">192</span>.<span class="number">168</span>.<span class="number">101</span>.<span class="number">1</span> </span><br><span class="line">端口开放返回ACK</span><br><span class="line">端口关闭返回RST</span><br></pre></td></tr></table></figure>
+<li><p>github删除仓库</p>
+<p>实际中某些仓库在开发过程中只用于测试,测试完成后,该仓库就没有作用.</p>
+<p>此时可以在GitHub上删除仓库.</p>
 </li>
-<li><p>UDP扫描</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn -PU IP_ADDRESS</span><br><span class="line">访问一个陌生的端口如<span class="number">40125</span>的原因:</span><br><span class="line">目的主机的端口如果不开放，会返回一个ICMP报文，</span><br><span class="line">通过ICMP判断主机存活</span><br><span class="line">对于该端口可以在自编译的nmap时，</span><br><span class="line">通过在nmap.h中更改DEFAULT_UDP_PROBE_PORT_SPEC，</span><br><span class="line">可以在编译时配置此缺省值</span><br></pre></td></tr></table></figure>
+<li><p>新建网页</p>
+<p>新建index.html</p>
+<p><a href="https://wai-clear.github.io/index.html">https://wai-clear.github.io/index.html</a></p>
 </li>
-<li><p>ICMP扫描</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn -PE IP_ADRESS</span><br><span class="line">发送E:<span class="built_in">echo</span> request</span><br><span class="line">如果主机存活，会返回<span class="built_in">echo</span> reply</span><br><span class="line">通过ICMP请求时间戳扫描等也可以间接获取主机存活信息</span><br><span class="line">（比如防护设备过滤的ICMP请求时，不会有reply数据包）</span><br></pre></td></tr></table></figure>
+<li><p>编辑Hexo配置文件</p>
+<p>submline打开(hexo init blog指令生成的文件夹),修改<strong>_config.yml</strong>,最下方添加:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:</span></span><br><span class="line">  <span class="string">WAI-clear/WAI-clear.github.io.git(gihub上对应参考的主分支目录)</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装插件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置git全局变量:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;2628543489@qq.com&quot;</span><br><span class="line">git config --global user.name &quot;WAI-clear&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成hexo新配置内容: 要在博客<strong>根目录</strong>下执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上传hexo 到github:要在博客<strong>根目录</strong>下执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo s 本地预览;http:&#x2F;&#x2F;localhost:4000&#x2F;</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">利用ICMP时间戳和地址掩码来测试</span><br><span class="line">#用ICMP时间戳请求来获取主机存活信息</span><br><span class="line">nmap -sn -PP IP_ADDRESS</span><br><span class="line">#用ICMP地址掩码查询来获取主机存活信息</span><br><span class="line">nmap -sn -PM(mask掩码) IP_ADDRESS</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>IP ping探测;</p>
-<p>对于进行推探测的IP协议包都是空的，</p>
-<p>也可以使用 –data-length进行添加报文长度；</p>
-<p>对于IP协议使用 -PO+协议编号来进行自定义协议探测，其中ICMP(1),IGMP(2),TCP(6),UDP(17)…</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn -PO IP_ADDRESS</span><br><span class="line">探测细节显示</span><br><span class="line">nmap -sn -PO --packet-trace IP_ADDRESS</span><br><span class="line">nmap -sn -PO --packet-trace --data-length <span class="number">333</span> IP_ADDRESS</span><br><span class="line"></span><br><span class="line">nmap -sn -PO1 ...</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>arp探测：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn -SR IP_ADDR</span><br><span class="line">//伪造mac地址，防止被发现</span><br><span class="line">nmap -sn -PR -spoof-mac <span class="number">11</span>:<span class="number">11</span>:<span class="number">11</span>:<span class="number">11</span>:<span class="number">11</span>:<span class="number">11</span> <span class="number">192</span>.<span class="number">168</span>.<span class="number">101</span>.<span class="number">14</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>隐藏真实行为:</p>
-<blockquote>
-<p>有时候使用空的数据包内容，或则默认的nmap数据包内容，可能会导致暴露nmap扫描行为。为了避免轻易被探测出扫描，可以加载一些随机数据到数据包中，已达到隐藏扫描行为。</p>
-</blockquote>
+<p>刷新github界面,发现hexo上传成功后,<a href="https://wai-clear.github.io/访问博客网址">https://wai-clear.github.io/访问博客网址</a>.</p>
 </li>
 </ul>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn -PS --data-length <span class="number">100</span> <span class="number">192</span>.<span class="number">168</span>.<span class="number">101</span>.<span class="number">14</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>nmap 中的DNS:</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">-R 开启DNS解析</span><br><span class="line">-n 关闭DNS解析</span><br><span class="line">...</span><br><span class="line">Nmap scan report <span class="keyword">for</span> baidu.com (<span class="number">39</span>.<span class="number">156</span>.<span class="number">69</span>.<span class="number">79</span>)</span><br><span class="line">Host is up (<span class="number">0</span>.<span class="number">048</span>s latency).</span><br><span class="line">Other addresses <span class="keyword">for</span> baidu.com (<span class="keyword">not</span> scanned): <span class="number">220</span>.<span class="number">181</span>.<span class="number">38</span>.<span class="number">148</span></span><br><span class="line">Nmap done: <span class="number">1</span> IP address (<span class="number">1</span> host up) scanned <span class="keyword">in</span> <span class="number">15</span>.<span class="number">17</span> seconds</span><br><span class="line"></span><br><span class="line">//指定DNS服务器解析域名</span><br><span class="line">#使用系统默认DNS</span><br><span class="line">nmap -sn -PS  --packet-trace --system-dns  baidu.com</span><br><span class="line">#指定DNS，此时也会同时调用了系统默认的DNS服务器，所以结果会更准确</span><br><span class="line"><span class="number">8</span>.<span class="number">8</span>.<span class="number">8</span>.<span class="number">8</span>，谷歌DNS服务器</span><br><span class="line"></span><br><span class="line">nmap -sn -PS  --packet-trace --dns-servers <span class="number">8</span>.<span class="number">8</span>.<span class="number">8</span>.<span class="number">8</span>  www.sena.com</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>路由信息获取：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn -PS  --packet-trace --traceroute  baidu.com</span><br><span class="line">//通过查看路由结果，看结果中的ip地址是否是私人的IP，判断是否遭受了IP欺骗</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p><strong>主机地理位置信息获取</strong>：</p>
-<p>nmap通过<strong>google地图API</strong>调用，利用谷歌进行IP地址获取对应地理信息的操作。</p>
-<p>注意： 对于陌生的nse脚本 可以使用 <strong>nmap –script-help 脚本名</strong>获取帮助信息</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nmap --script-<span class="built_in">help</span> ip-geolocation-geoplugin </span><br><span class="line"></span><br><span class="line">nmap -sn --script ip-geolocation-geoplugin www.baidu.com</span><br></pre></td></tr></table></figure>
-
-<p>过程中访问了国外的服务器，所以经纬度信息没法返回。</p>
-<p>通过： <a href="https://www.iplocation.net/" target="_blank" rel="noopener">https://www.iplocation.net/</a>  可以替代查询ipip的位置</p>
-<p><strong>whois</strong>：</p>
-<blockquote>
-<p>whois是用来查询域名的IP以及所有者等信息的传输协议。简单说，whois就是一个用来查询域名是否已经被注册，以及注册域名的详细信息的数据库（如域名所有人、域名注册商).</p>
-</blockquote>
-<blockquote>
-<p>通过whois实现域名信息的查询。早期的whois查询多以命令列接口存在，但是现在出现了一些网页接口简化的线上查询攻击，可以一次向不同的数据库查询。网页接口的查询工具仍然依赖whois协议向服务器发送查询请求，命令列接口的工具仍然被系统管理员广泛使用。whois通常使用TCP协议43端口。每个域名/IP的whois信息由对应的管理机构保存。</p>
-</blockquote>
-<p><strong>kali自带whois</strong>:</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whois 目标</span><br></pre></td></tr></table></figure>
-
-<p><strong>nmap whois-ip脚本</strong>:</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nmap --script-<span class="built_in">help</span>  whois-ip </span><br><span class="line"></span><br><span class="line">nmap -sn --script whois-ip www.baidu.com</span><br></pre></td></tr></table></figure>
-
-<p><strong>网页wois</strong>:</p>
-<p><a href="http://whois.chinaz.com/" target="_blank" rel="noopener">http://whois.chinaz.com/</a></p>
-<p><strong>nmap获取robots信息</strong>:</p>
-<blockquote>
-<p>​    robots.txt是搜索引擎访问网站的时候要查看的<strong>第一个文件</strong>。当一个搜索蜘蛛访问要给站点时，它会首先检查站点根目录下是否存在robots.txt,如果存在，搜索机器人就会按照该文件的内容来确定访问的范围：如果该文件不存在，所有的搜索蜘蛛将能访问所有没有被口令保护的页面。</p>
-<p>可以通过站点<strong>根</strong>目录下加入robots.txt,来查看相应内容。</p>
-</blockquote>
-<p>默认没有http-robots.nse脚本，需要自己下载放到/usr/share/nmap/scripts/</p>
-<p><strong>端口banner</strong>:</p>
-<blockquote>
-<p>在对<strong>开放端口</strong>发送某些数据时，开放的端口就会返回到发送端一些banner信息。其中会<strong>包含一些欢迎信息以及一些端口信息</strong></p>
-</blockquote>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-nc </span><br><span class="line">nc <span class="number">192</span>.<span class="number">168</span>.<span class="number">101</span>.<span class="number">1</span> <span class="number">80</span></span><br><span class="line"></span><br><span class="line">#获取目标所有开放端口信息，实际时建立tcp连接请求，连接的瞬间会返回banner信息</span><br><span class="line">nmap -sV --script banner www.baidu.com</span><br><span class="line"></span><br><span class="line">#获取指定开放端口Banner信息</span><br><span class="line">nmap  --script banner --script-args banner.port=<span class="number">80</span> 目标</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>主机防护措施WAF探测</strong>：</p>
-<p>主机防护措施介绍：</p>
-<p>​    入侵检测系统（IPS: Instrusion Prevention System)是电脑网络安全设施，是对防病毒软件和防火墙的补充。 入侵防御系统是一部能够监视网络或网络设备的网络资料传输行为的计算机网络安全设备，能够即时的中断、调整或隔离一些不正常或是具有伤害性的网络资料传输行为。</p>
-<p>IDS（ Intrusion Detection Systems) 中文意识是”入侵检测系统“。专业上讲就是依照一定的安全策略，通过软件、硬件、对网络、系统的运行状况进行监视，尽可能发现各种攻击企图、攻击行为或者攻击结果，以保证网络系统资源的机密性、完整性和可用性。做一个形象的比喻：假如防火墙是一幢大楼的门锁，那么IDS就是这幢大楼里的监视系统。一旦小偷爬窗进入大楼，或内部人员有越界行为，只有实时监视系统才能发现情况并发出警告。</p>
-<p>web应用防护系统（也称：网站应用级入侵防护系统。Web Application Firewall,简称：（WAF)。利用国际上公认的说法：web应用防火墙是通过执行一系列针对http/https的安全策略来专门为web应用提供保护的一款产品。    </p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#waf探测</span><br><span class="line">nmap -p80 --script http-waf-detect edu.<span class="number">51</span>cto.com</span><br><span class="line">#waf指纹探测：</span><br><span class="line">nmap -p80 --script http-waf-fingerprint edu.<span class="number">51</span>cto.com</span><br></pre></td></tr></table></figure>
-
-<p><strong>DNS记录获取</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnsenum 51cto.com</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap --script dns-brute www.csust.com</span><br></pre></td></tr></table></figure>
-
-<p><strong>nmap获取主机操作系统信息</strong>：</p>
-<blockquote>
-<p>​    nmap通过发送对应数据包到目标机器，目标机器会返回特定数据响应包，然后nmap会根据自身的指纹库对返回数据包进行比对。然后得出结论.</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nmap -O 192.168.1.100</span><br><span class="line">#侵略性:</span><br><span class="line">nmap -O --osscan-guess 目标</span><br><span class="line">#理想条件扫描</span><br><span class="line">#只有当扫描条件(网络畅通等)很理想才启动操作系统信息扫描,避免触发某些安全机制</span><br><span class="line">nmap -O -v --osscan-limit 目标</span><br></pre></td></tr></table></figure>
-
-<p><strong>获取同一个IP下的所有主机</strong>:</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p80 --script hostmap-ip2hosts 目标</span><br></pre></td></tr></table></figure>
-
-<p>扫描结果出现一个html文件却没有对应的主机信息,通过wireshark抓包分析<br>抓包发现在一个http包中访问了<a href="http://www.ip2hosts.com/csv.php?ip=目标,可见是通过网站查询数据,结果该网站无法访问,所以没有结果返回" target="_blank" rel="noopener">http://www.ip2hosts.com/csv.php?ip=目标,可见是通过网站查询数据,结果该网站无法访问,所以没有结果返回</a>.<br>通过站长之家替代查询:<a href="http://s.tool.chinaz.com/same" target="_blank" rel="noopener">http://s.tool.chinaz.com/same</a></p>
-<p><strong>枚举UDP服务</strong></p>
-<p>nmap默认探测tcp服务的端口.</p>
-<p>nmap -sU -p80 目标</p>
-<p>扫描结果显示没有相应会显示是open|filtered,因为udp协议本身就不会有返回数据.</p>
-<p>返回ICMP(不可达)时表示端口是关闭的.</p>
-<p><strong>获取主机支持的IP协议</strong>:</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sO -v 目标</span><br></pre></td></tr></table></figure>
-
-<p>协议存放路径:</p>
-<p>/usr/share/nmap/nmap-protocols</p>
+<p><strong>git博客主题安装</strong>:</p>
+<p>​    <a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
+<p>​    下载主题后,添加到博客themes/目录下,修改_config.xml中的themes:的内容为主题的文件名</p>
+<p>melody主题参考文档:</p>
+<p><a href="https://molunerfinn.com/hexo-theme-melody-doc/theme-pages.html" target="_blank" rel="noopener">https://molunerfinn.com/hexo-theme-melody-doc/theme-pages.html</a></p>
 
             </div>
             <hr/>
@@ -633,7 +776,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://wai-clear.github.io/2020/06/24/%E4%B8%BB%E6%9C%BA%E4%BF%A1%E6%81%AF%E5%8F%91%E7%8E%B0/">https://wai-clear.github.io/2020/06/24/%E4%B8%BB%E6%9C%BA%E4%BF%A1%E6%81%AF%E5%8F%91%E7%8E%B0/</a>
+                    <a href="https://wai-clear.github.io/2020/06/24/git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">https://wai-clear.github.io/2020/06/24/git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -671,8 +814,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/nmap/">
-                                    <span class="chip bg-color">nmap</span>
+                                <a href="/tags/git/">
+                                    <span class="chip bg-color">git</span>
                                 </a>
                             
                         </div>
@@ -840,9 +983,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/06/24/git%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">
                     <div class="card-image">
@@ -868,9 +1012,9 @@ htt
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -883,6 +1027,7 @@ htt
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -901,32 +1046,48 @@ htt
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/23/hello-world/">
+                <a href="/2020/06/24/%E4%B8%BB%E6%9C%BA%E4%BF%A1%E6%81%AF%E5%8F%91%E7%8E%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="主机信息发现">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">主机信息发现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            nmap –script-help 脚本名 里面会有解释文档的链接信息
+判断主机存活方式：
+
+-sn（ping scan）:不进行端口扫描
+123nmap -sn 192.168.101.14/24ping www.baidu.comnma
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-24
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            WAI-clear
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%BC%8F%E6%89%AB/" class="post-category">
+                                    漏扫
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/nmap/">
+                        <span class="chip bg-color">nmap</span>
+                    </a>
+                    
                 </div>
                 
             </div>
