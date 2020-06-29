@@ -1,0 +1,1353 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="web安全python基础, WAI-clear">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>web安全python基础 | WAI-clear</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">WAI-clear</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">WAI-clear</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://wai-clear.github.io/" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://wai-clear.github.io/" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">web安全python基础</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/web/" class="post-category">
+                                web
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-06-29
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h5 id="http协议介绍"><a href="#http协议介绍" class="headerlink" title="http协议介绍"></a><strong>http协议介绍</strong></h5><ul>
+<li>协议分类<ul>
+<li>HTTP1.0  80端口</li>
+<li>HTTP1.1  80端口</li>
+</ul>
+</li>
+<li>协议弊端和修正<ul>
+<li>弊端： 明文传输不安全</li>
+<li>修在：使用HTTPS协议，加密传输数据</li>
+</ul>
+</li>
+<li>请求方法：<ul>
+<li>HTTP1.0<ul>
+<li>GET</li>
+<li>POST</li>
+<li>HEAD</li>
+</ul>
+</li>
+<li>HTTP1.1&amp;HTTPS:<ul>
+<li>PUT</li>
+<li>DELETE</li>
+<li>TRACE</li>
+<li>CONNECT</li>
+<li>PATCH</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>HTTP请求头<ul>
+<li>User-Agent: 主要是浏览器信息</li>
+<li>Acccept-encoding: 浏览器接受的编码</li>
+<li>Refer: 当前网页跳转来源</li>
+<li>Location: 跳转目的地</li>
+<li>WWW-Authenticate: 用于身份验证HTTP Basic等。</li>
+</ul>
+</li>
+<li>HTTP响应状态码：<ul>
+<li>1XX:信息提示</li>
+<li>2XX: 请求成功</li>
+<li>3XX：重定向（请求的页面可能已经迁移，服务端跳转到新的页面地址）</li>
+<li>4XX:  客户端错误（发送了不存在的请求</li>
+<li>5XX: 服务端错误</li>
+</ul>
+</li>
+</ul>
+<p><strong>实际查看</strong>：</p>
+<p>打开控制台（F12)，选择network:</p>
+<h5 id="Python-HTTP请求："><a href="#Python-HTTP请求：" class="headerlink" title="Python-HTTP请求："></a><strong>Python-HTTP请求</strong>：</h5><ul>
+<li>GET请求</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://www.baidu.com"</span></span><br><span class="line">payload = &#123;<span class="string">'username'</span>:<span class="string">'parm1Val'</span>,<span class="string">'password'</span>:<span class="string">'parm2Val'</span>&#125;</span><br><span class="line">r = requests.get(url,params=payload)</span><br><span class="line">result = r.content <span class="comment">#返回的是二级制数据</span></span><br><span class="line"><span class="keyword">if</span> str(result).find(<span class="string">'返回页面包含的关键字信息'</span>):</span><br><span class="line">	<span class="keyword">pass</span><span class="comment">#可以保存正确的用户名密码等</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>POST请求：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">""</span></span><br><span class="line"><span class="comment">#post请求中提交的所有数据用字典打包</span></span><br><span class="line">data = &#123;<span class="string">'username'</span>:<span class="string">'admin'</span>,<span class="string">'password'</span>:<span class="string">'admin'</span>,<span class="string">'submit'</span>:<span class="string">'登录'</span>&#125;</span><br><span class="line">r = requests.post(url , data = data)</span><br><span class="line">print(r.status_code)</span><br><span class="line"><span class="comment">#判断是否成功，成功保存账号信息</span></span><br><span class="line"><span class="keyword">if</span> r.text.find(<span class="string">'返回页面的关键字信息'</span>)：</span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>自定义请求头</p>
+<ul>
+<li><p>GET</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">""</span></span><br><span class="line"><span class="comment">#修改头部信息</span></span><br><span class="line">headers = &#123;<span class="string">"User-Agent"</span>:<span class="string">"xxx"</span>&#125;</span><br><span class="line">r = requests.get(url,headers=headers)</span><br><span class="line">print(r.request.headers)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>request.post</p>
+</li>
+<li><p>request.delete</p>
+</li>
+<li><p>request.options</p>
+</li>
+<li><p>requests.put</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Python-HTTP响应："><a href="#Python-HTTP响应：" class="headerlink" title="Python-HTTP响应："></a><strong>Python-HTTP响应</strong>：</h5><ul>
+<li><p>响应状态码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">"http://www.baidu.com"</span></span><br><span class="line"></span><br><span class="line">r = requests.get(url)</span><br><span class="line">print(r.status_code)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取响应文本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">r = requests.get(url)</span><br><span class="line"><span class="comment">#返回源代码</span></span><br><span class="line">print(r.text)</span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">100</span>)</span><br><span class="line"><span class="comment">#返回二进制数据</span></span><br><span class="line">print(r.content)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取响应和请求头:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#响应头</span></span><br><span class="line">print(r.headers)</span><br><span class="line"><span class="comment">#请求头</span></span><br><span class="line">print(r.request.headers)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取请求的url</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r &#x3D; requests.get(url,params&#x3D;payload)</span><br><span class="line">print(r.url)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取cookie</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">"https://www.baidu.com"</span></span><br><span class="line">r = requests.get(url)</span><br><span class="line">print(r.cookies)</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h5 id="python-http代理："><a href="#python-http代理：" class="headerlink" title="python-http代理："></a><strong>python-http代理</strong>：</h5><p>参数：</p>
+<ul>
+<li>proxies: 用于代理的主机IP</li>
+<li>verify=false:不进行证书验证</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">"https://www.baidu.com"</span></span><br><span class="line"></span><br><span class="line">proxies =&#123;<span class="string">'http'</span>:<span class="string">'http://192.168.32.136:8080'</span>,<span class="string">'https'</span>:<span class="string">'https://192.168.32.136:8080'</span>&#125;</span><br><span class="line"></span><br><span class="line">r = requests.get(url,proxies = proxies,verify = <span class="literal">False</span>)</span><br><span class="line">print(r)</span><br></pre></td></tr></table></figure>
+
+<h5 id="python会话编程："><a href="#python会话编程：" class="headerlink" title="python会话编程："></a><strong>python会话编程</strong>：</h5><ul>
+<li><p>携带Cookie的会话：</p>
+<p>访问某些页面时，会通过Set-Cookie设置Cookie值，以便下一次访问自动提Cookie进行身份验证</p>
+</li>
+<li><p>Session的会话</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">"https://www.baidu.com"</span></span><br><span class="line">s = requests.Session()</span><br><span class="line">r = s.get(url)</span><br><span class="line"><span class="comment">#第一次请求后的结果中返回了cookie</span></span><br><span class="line">print(r.cookies)</span><br><span class="line">print(r.request.headers)</span><br><span class="line">r1 = s.get(url)</span><br><span class="line">print(r1.cookies)</span><br><span class="line"><span class="comment">#同一会话中第二次请求时，请求头中包含了cookie</span></span><br><span class="line">print(r1.request.headers)</span><br></pre></td></tr></table></figure>
+
+<h5 id="python实现目录扫描："><a href="#python实现目录扫描：" class="headerlink" title="python实现目录扫描："></a><strong>python实现目录扫描</strong>：</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = sys.argv[<span class="number">1</span>]<span class="comment">#从终端读取</span></span><br><span class="line">dir = sys.argv[<span class="number">2</span>] <span class="comment">#命令行接受要读取的文件</span></span><br><span class="line"><span class="keyword">with</span> open(dir,<span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">   <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</span><br><span class="line">    	line = line.strip() <span class="comment">#去除末尾换行</span></span><br><span class="line">        r = requests.get(url+line)</span><br><span class="line">        <span class="keyword">if</span> r.status_code == <span class="number">200</span>:</span><br><span class="line">            print(<span class="string">"url:"</span> + r.url + <span class="string">"exist"</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Python-IIS PUT漏洞探测工具</strong>：</p>
+<p>​    <strong>注</strong>：简单的来说，WebDAV像是一个各种 App 都能够连接的一种存储服务，可以            让 App 直接访问云盘。</p>
+<ul>
+<li><p><strong>漏洞原理</strong>：造成漏洞的原因是IIS中间件<strong>开启了WebDAV服务</strong>。WebDAV支持HTTP方法，也提供了一些功能强大的方法（如:Move），使得开启WebDAV可以直接上传任意文件。通过HTTP <strong>options方法</strong>可以探测出服务器支持的http方法中是否有Move和put(put用于文件上传，move用于讲put上传的txt文件拷贝到.php等可执行文件中)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">r = requests.options(url)</span><br><span class="line"><span class="comment">#public中是webDAV支持的http方法</span></span><br><span class="line">result = r.headers[<span class="string">'Public'</span>]</span><br><span class="line"><span class="keyword">if</span> result.find(<span class="string">"PUT"</span>) <span class="keyword">and</span> request.find(<span class="string">"MOVE"</span>):</span><br><span class="line">    print(result)</span><br><span class="line">    print(<span class="string">"exist iis put vulnerability"</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>Python获取HTTP服务器信息</strong>：</p>
+<p>通过响应头中的Server和X-Powered-By等字段。</p>
+<p><strong>Python漏洞检测工具</strong>：</p>
+<p><strong>注</strong>：Microsoft安全公告 例：MS15-034 ：15年第34个漏洞</p>
+<p>​        如果主机开启了80端口，表明IIS开启成功</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#MS15-034</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">"http://ip/"</span> <span class="comment">#/表示根目录</span></span><br><span class="line">r = requests.get(url)</span><br><span class="line"><span class="comment">#找到远程主机中间件类型和版本，从而对应漏洞</span></span><br><span class="line">remote_server = r.headers[<span class="string">'Server'</span>]</span><br><span class="line"><span class="keyword">if</span> remote_server.find(<span class="string">"IIS/7.5"</span>) <span class="keyword">or</span> remote_server.find(<span class="string">"IIS/8.0"</span>):</span><br><span class="line">    <span class="comment">#漏洞利用</span></span><br><span class="line">    payload = &#123;<span class="string">'Host'</span>:<span class="string">'stuff'</span>,<span class="string">'Range'</span>:<span class="string">'byte = 0-11651515151515'</span>&#125;</span><br><span class="line">    r1 = requests.get(url,headers=payload)</span><br><span class="line">    <span class="comment">#print(r1.request.headers)</span></span><br><span class="line">	<span class="keyword">if</span> str(r1.content).find(<span class="string">"Requested Range Not Statisfiable"</span>):</span><br><span class="line">        print(url + <span class="string">"exist vuln ms15-034"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Python Scrapy</strong>：</p>
+<p>​    <strong>注</strong>：Scrapy是一个用于抓取web站点和提取结构化数据的应用程序框架，可用于广            泛的应用程序，如数据挖掘、信息处理或历史存档。</p>
+<p>​            命令行输入Scrapy会提示帮助信息</p>
+<ul>
+<li><strong>Linux</strong>下安装:</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python3 python3-dev</span><br><span class="line">sudo apt-get install python3-pip</span><br><span class="line">pip3 install scrapy</span><br><span class="line">ipython3</span><br><span class="line">import scrapy</span><br><span class="line">scrapy.version_info</span><br></pre></td></tr></table></figure>
+
+<p>安装过程遇到：</p>
+<p>*<em>WARNING: The script scrapy is installed in ‘/home/kali/.local/bin’ which is not on PATH.<br>  Consider adding this directory to PATH or, if you prefer to suppress this warning, use –no-warn-script-location. *</em></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">leafpad ~/.bashrc</span><br><span class="line">export <span class="built_in">PATH</span>=/home/kali/.local/bin/:$<span class="built_in">PATH</span></span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>Scrapy创建工程：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">scrapy startproject -h</span><br><span class="line">scrapy startproject testPro</span><br><span class="line"><span class="built_in">cd</span> testPro</span><br><span class="line">ls</span><br><span class="line"><span class="built_in">cd</span> testPro</span><br><span class="line"><span class="built_in">cd</span> spiders</span><br></pre></td></tr></table></figure>
+
+<p>工程目录：</p>
+<ul>
+<li>items.py:设置要爬取的字段</li>
+<li>pipelines.py: 设置保存爬取内容</li>
+<li>settings.py: 设置文件，比如User-Agent</li>
+</ul>
+</li>
+</ul>
+<p><strong>python scrapy 爬虫案例设计</strong>：</p>
+<p><strong>注</strong>：python中带有__init__.py文件的文件夹称为包</p>
+<ul>
+<li><p>爬取内容(武汉大学网络空间安全学院新闻)：<a href="http://cse.whu.edu.cn/index.php?s=/home/xwzx/lists/category/zhxw/p/12.html" target="_blank" rel="noopener">http://cse.whu.edu.cn/index.php?s=/home/xwzx/lists/category/zhxw/p/12.html</a></p>
+</li>
+<li><p>爬取字段：新闻url，新闻标题，新闻发布时间</p>
+</li>
+<li><p>新建工程</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scrapy startproject TencentPro</span><br><span class="line">ls</span><br><span class="line"><span class="built_in">cd</span> TencentPro/</span><br></pre></td></tr></table></figure>
+
+<p>​    用pycharm打开工程</p>
+<ul>
+<li>确定要爬取内容，修改items.py</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Define here the models for your scraped items</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># See documentation in:</span></span><br><span class="line"><span class="comment"># https://docs.scrapy.org/en/latest/topics/items.html</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyspiderItem</span><span class="params">(scrapy.Item)</span>:</span></span><br><span class="line">    <span class="comment"># define the fields for your item here like:</span></span><br><span class="line">    <span class="comment"># name = scrapy.Field()</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ItcastItem</span><span class="params">(scrapy.Item)</span>:</span></span><br><span class="line">    name = scrapy.Field()</span><br><span class="line">    title = scrapy.Field()</span><br><span class="line">    info = scrapy.Field()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>生成基础爬虫类：whu</p>
+<p><strong>注</strong>：cse.whu.edu.cn 爬虫将爬取的域范围</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scrapy genspider whu "cse.whu.edu.cn"</span><br><span class="line"><span class="built_in">cd</span> spiders/</span><br></pre></td></tr></table></figure>
+
+<p>whu.py:从items中导入wuhanItem类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"><span class="keyword">from</span> wuHan.items <span class="keyword">import</span> WuhanItem</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WhuSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">    name = <span class="string">'whu'</span></span><br><span class="line">    allowed_domains = [<span class="string">'cse.whu.edu.cn'</span>]</span><br><span class="line">    start_urls = [<span class="string">'http://cse.whu.edu.cn/'</span>]</span><br><span class="line">    url = <span class="string">'http://cse.whu.edu.cn/index.php?s=/home/xwzx/lists/category/zhxw/p/'</span></span><br><span class="line">    offset = <span class="number">1</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> response.xpath(<span class="string">"//div[@class='news_list']/ul"</span>):</span><br><span class="line"></span><br><span class="line">            item = WuhanItem()</span><br><span class="line">            url = line.xpath(<span class="string">"li/a/@href"</span>).extract()</span><br><span class="line">            title = line.xpath(<span class="string">"li/a/h3/text()"</span>).extract()</span><br><span class="line">            time = line.xpath(<span class="string">"li/span/text()"</span>).extract()</span><br><span class="line">           <span class="comment">#print("*" * 20)</span></span><br><span class="line">           <span class="comment">#print(line)</span></span><br><span class="line">           <span class="comment">#print("*" * 20)</span></span><br><span class="line">            item[<span class="string">'url'</span>] = url</span><br><span class="line">            item[<span class="string">'title'</span>] = title</span><br><span class="line">            item[<span class="string">'time'</span>] = time</span><br><span class="line">            <span class="keyword">yield</span> item</span><br><span class="line">        <span class="keyword">if</span> self.offset &lt; <span class="number">13</span>:</span><br><span class="line">            self.offset = self.offset + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">yield</span> scrapy.Request(self.url+str(self.offset)+<span class="string">".html"</span>, callback=self.parse)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改piplines.py:接收存储数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Define your item pipelines here</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Don't forget to add your pipeline to the ITEM_PIPELINES setting</span></span><br><span class="line"><span class="comment"># See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># useful for handling different item types with a single interface</span></span><br><span class="line"><span class="keyword">from</span> itemadapter <span class="keyword">import</span> ItemAdapter</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WuhanPipeline</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.filename = open(<span class="string">"wuHan.json"</span>,<span class="string">"w"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_item</span><span class="params">(self, item, spider)</span>:</span></span><br><span class="line">        text = json.dumps(dict(item),ensure_ascii=<span class="literal">False</span>)+<span class="string">".\n"</span></span><br><span class="line">        self.filename.write(str(text))</span><br><span class="line">        <span class="keyword">return</span> item</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close_spider</span><span class="params">(self,spider)</span>:</span></span><br><span class="line">        self.filename.close()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改settings.py:User-Agent,Accept选择可以访问网站的浏览器中http头部信息</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">   <span class="string">'wuHan.pipelines.WuhanPipeline'</span>: <span class="number">300</span>,</span><br><span class="line">&#125;</span><br><span class="line">DEFAULT_REQUEST_HEADERS = &#123;</span><br><span class="line">  <span class="string">'Accept'</span>: <span class="string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span>,</span><br><span class="line">  <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36</span></span><br><span class="line"><span class="string">   (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>启动爬虫：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy crawl whu(爬虫名)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>基于字典的目录资源破解工具编写</strong>：</p>
+<p><strong>原理</strong>：通过读取字典文件获取内容，拼接URL,执行GET http请求，获取响应状态码，根据状态码判断目录文件资源是否存在。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> getopt</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">banner</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"*"</span>*<span class="number">51</span>)</span><br><span class="line">    print(<span class="string">"*"</span>*<span class="number">2</span>+ <span class="string">" "</span>*<span class="number">17</span> + <span class="string">"DirBrute v1.0"</span> + <span class="string">" "</span>*<span class="number">17</span> + <span class="string">"*"</span>*<span class="number">2</span>)</span><br><span class="line">    print(<span class="string">"*"</span>*<span class="number">51</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># python Dirbrute.py -u url -t thread -d dictionary</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">usage</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"This is the tool's usage"</span>)</span><br><span class="line">    print(<span class="string">"python Dirbrute.py -u url -t thread -d dictionary"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># opts,args = getopt.getopt(sys.argv[1:],"u:t:d:")</span></span><br><span class="line"><span class="comment"># for k,v in opts:</span></span><br><span class="line"><span class="comment">#     print(k)</span></span><br><span class="line"><span class="comment">#     print(v)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">start</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(len(sys.argv) == <span class="number">7</span>):</span><br><span class="line">        <span class="comment">#valid length</span></span><br><span class="line">        opts,args = getopt.getopt(sys.argv[<span class="number">1</span>:],<span class="string">"u:t:d:"</span>)</span><br><span class="line">        <span class="keyword">for</span> k,v <span class="keyword">in</span> opts:</span><br><span class="line">            <span class="keyword">if</span> k == <span class="string">"-u"</span>:</span><br><span class="line">                url = v</span><br><span class="line">            <span class="keyword">elif</span> k == <span class="string">"-t"</span>:</span><br><span class="line">                threads = v</span><br><span class="line">            <span class="keyword">elif</span> k == <span class="string">"-d"</span>:</span><br><span class="line">                dic = v</span><br><span class="line">        multi_scan(url,threads,dic)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"Error Argument!"</span>)</span><br><span class="line">        usage()</span><br><span class="line">        sys.exit()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">multi_scan</span><span class="params">(url,threads,dic)</span>:</span></span><br><span class="line">    result_list = []</span><br><span class="line">    threads_list = []</span><br><span class="line">    <span class="keyword">with</span> open(dic,<span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        dic_list = f.readlines()</span><br><span class="line">        <span class="comment">#number of lines for each thread</span></span><br><span class="line">        <span class="keyword">if</span> len(dic_list) % int(threads) == <span class="number">0</span>:</span><br><span class="line">            lines_each_thread = len(dic_list) / int(threads)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            lines_each_thread = math.ceil(len(dic_list)/ int(threads))</span><br><span class="line">        <span class="comment">#print(type(lines_each_thread))</span></span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        temp_list = []</span><br><span class="line">        print(lines_each_thread)</span><br><span class="line">        print(dic_list)</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> dic_list:</span><br><span class="line">            i = i + <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> i % lines_each_thread == <span class="number">0</span>:</span><br><span class="line">                temp_list.append(line.strip())</span><br><span class="line">                result_list.append(temp_list)</span><br><span class="line">                temp_list = []</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                temp_list.append(line.strip())</span><br><span class="line">    result_list.append(temp_list)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> result_list:</span><br><span class="line">        threads_list.append(threading.Thread(target=scan, args=(url,i)))</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> threads_list:</span><br><span class="line">        t.start()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">scan</span><span class="params">(url,dic)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> dic:</span><br><span class="line">        r = requests.get(url+<span class="string">"/"</span>+line)</span><br><span class="line">        <span class="keyword">if</span> r.status_code == <span class="number">200</span>:</span><br><span class="line">            print(r.url+<span class="string">":"</span>+str(r.status_code))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    start()</span><br></pre></td></tr></table></figure>
+
+
+
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">WAI-clear</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://wai-clear.github.io/2020/06/29/web%E5%AE%89%E5%85%A8python%E5%9F%BA%E7%A1%80/">https://wai-clear.github.io/2020/06/29/web%E5%AE%89%E5%85%A8python%E5%9F%BA%E7%A1%80/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">WAI-clear</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/06/29/web%E5%AE%89%E5%85%A8python%E5%9F%BA%E7%A1%80/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="web安全python基础">
+                        
+                        <span class="card-title">web安全python基础</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            http协议介绍
+协议分类
+HTTP1.0  80端口
+HTTP1.1  80端口
+
+
+协议弊端和修正
+弊端： 明文传输不安全
+修在：使用HTTPS协议，加密传输数据
+
+
+请求方法：
+HTTP1.0
+GET
+POST
+HEAD
+
+
+HTTP
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/web/" class="post-category">
+                                    web
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/06/25/tcpdump/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="tcpdump">
+                        
+                        <span class="card-title">tcpdump</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            作用：
+
+​    TcpDump可以将网络中传输的数据包完全截获下来提供分析。它支持针对网络层、协议、主机、网络或端口的过滤，并提供and、or、not等逻辑语句来帮助你去掉无用的信息。
+一般情况下，Linux操作系统默认安装了tcpdu
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%8A%93%E5%8C%85/">
+                        <span class="chip bg-color">抓包</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">WAI-clear</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2628543489@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2628543489" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2628543489" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
